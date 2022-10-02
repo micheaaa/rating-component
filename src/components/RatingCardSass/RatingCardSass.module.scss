@@ -43,7 +43,7 @@
   }
 }
 
-.ratingScreen {
+.rating_screen {
   display: grid;
   gap: 3rem;
 
@@ -51,7 +51,7 @@
     justify-self: flex-start;
   }
 
-  .icon, .ratingSection label {
+  .icon, .rating_section label {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,7 @@
     background-color: $blue;
   }
 
-  .ratingSection {
+  .rating_section {
     display: flex;
     gap: 2.5rem;
 
@@ -96,14 +96,14 @@
   }
 }
 
-.resultScreen {
+.result_screen {
   display: grid;
   justify-items: center;
   gap: 3rem;
   @include py(1.8rem);
   text-align: center;
 
-  .resultBanner {
+  .result_banner {
     padding: 1rem 1.5rem;
     border-radius: 999px;
     color: $orange;

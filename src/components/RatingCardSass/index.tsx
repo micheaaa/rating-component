@@ -4,7 +4,7 @@ import {cva} from 'class-variance-authority'
 import {ReactComponent as Star} from '~/assets/icon-star.svg'
 import {ReactComponent as Transaction} from '~/assets/illustration-thank-you.svg'
 
-import styles from './RatingCardSass.module.scss'
+import s from './RatingCardSass.module.scss'
 
 interface RatingScreenProps {
   setRating: (v?: number) => void
@@ -13,9 +13,9 @@ interface ResultScreenProps extends RatingScreenProps {
   rating: number
 }
 
-const card = cva(styles.card, {
+const card = cva(s.card, {
   variants: {
-    result: {true: styles.result}
+    result: {true: s.result}
   }
 })
 
@@ -30,13 +30,13 @@ function RatingScreen({setRating}: RatingScreenProps) {
   }
 
   return (
-    <form className={styles.ratingScreen} onSubmit={handleSubmit}>
-      <span className={styles.icon}><Star /></span>
+    <form className={s.rating_screen} onSubmit={handleSubmit}>
+      <span className={s.icon}><Star /></span>
       <section>
         <h1>How did we do?</h1>
         <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
       </section>
-      <section className={styles.ratingSection}>
+      <section className={s.rating_section}>
         {Array.from({length: 5}, (_, i) =>
           <span key={i}>
             <input
@@ -56,14 +56,14 @@ function RatingScreen({setRating}: RatingScreenProps) {
 
 function ResultScreen({rating, setRating}: ResultScreenProps) {
   return (
-    <div className={styles.resultScreen}>
+    <div className={s.result_screen}>
       <Transaction />
-      <span className={styles.resultBanner}>You have selected {rating} out of 5</span>
+      <span className={s.result_banner}>You have selected {rating} out of 5</span>
       <section>
         <h1>Thank you!</h1>
         <p>We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
       </section>
-      <button onClick={() => setRating(undefined)}>Edit</button>
+      <button onClick={() => setRating()}>Edit</button>
     </div>
   )
 }
