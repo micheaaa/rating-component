@@ -20,6 +20,10 @@ export const {styled, css} = createStitches({
     lg: '(max-width: 1024px)',
   },
   utils: {
+    py: (value: string | number) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }), 
     trns: (value: string) => ({
       transitionProperty: value,
       transitionDuration: '0.1s',
