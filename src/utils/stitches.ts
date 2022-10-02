@@ -12,5 +12,18 @@ export const {styled, css} = createStitches({
       dark_blue: 'hsl(216, 12%, 8%)', 
       darkest_blue: 'hsl(225, 9%, 9%)',
     }
+  },
+  media: {
+    xs: '(max-width: 400px)',
+    sm: '(max-width: 600px)',
+    md: '(max-width: 830px)',
+    lg: '(max-width: 1024px)',
+  },
+  utils: {
+    trns: (value: string) => ({
+      transitionProperty: value,
+      transitionDuration: '0.1s',
+      transitionTimingFunction: 'ease-in-out',
+    }),
   }
 })
