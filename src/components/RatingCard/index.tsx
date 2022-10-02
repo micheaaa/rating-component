@@ -49,7 +49,7 @@ function RatingScreen({setRating}: RatingScreenProps) {
 
 function ResultScreen({rating, setRating}: ResultScreenProps) {
   return (
-    <StyledResultScreen >
+    <StyledResultScreen>
       <Transaction />
       <span className="result-banner">You have selected {rating} out of 5</span>
       <section>

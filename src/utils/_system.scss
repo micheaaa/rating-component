@@ -1,0 +1,32 @@
+$white: hsl(0, 0%, 100%);
+$light_grey: hsl(217, 12%, 63%);
+$medium_grey: hsl(216, 12%, 54%);
+$orange: hsl(25, 97%, 53%);
+$blue: hsl(213, 19%, 18%);
+$dark_blue: hsl(216, 12%, 8%); 
+$darkest_blue: hsl(225, 9%, 9%);
+
+$breakpoints: (
+  xs: '(max-width: 400px)',
+  sm: '(max-width: 600px)',
+  md: '(max-width: 830px)',
+  lg: '(max-width: 1024px)',
+);
+
+@mixin bp($b) {
+  $value: map-get($breakpoints, $b);
+
+  @media screen and #{$value} {
+    @content;
+  }
+}
+
+@mixin py($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+@mixin trns($values...) {
+  transition-property: $values;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+}
