@@ -58,7 +58,7 @@ function ResultScreen({rating, setRating}: ResultScreenProps) {
   return (
     <div className={styles.resultScreen}>
       <Transaction />
-      <span className={styles.ratingBanner}>You have selected {rating} out of 5</span>
+      <span className={styles.resultBanner}>You have selected {rating} out of 5</span>
       <section>
         <h1>Thank you!</h1>
         <p>We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
