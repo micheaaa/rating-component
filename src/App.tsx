@@ -1,6 +1,7 @@
 import {styled} from './utils/stitches'
 
 import {RatingCard} from './components/RatingCard'
+import {RatingCardSass} from './components/RatingCardSass'
 
 const StyledContainer = styled('div', {
   display: 'flex',
@@ -15,7 +16,10 @@ const StyledContainer = styled('div', {
 function App() {
   return (
     <StyledContainer className="App">
-      <RatingCard />
+      {/*
+        * <RatingCard />
+        */}
+      <RatingCardSass />
     </StyledContainer>
   )
 }
