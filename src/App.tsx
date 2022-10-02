@@ -1,3 +1,5 @@
+import {Route} from 'wouter'
+
 import {styled} from './utils/stitches'
 
 import {RatingCard} from './components/RatingCard'
@@ -16,10 +18,12 @@ const StyledContainer = styled('div', {
 function App() {
   return (
     <StyledContainer className="App">
-      {/*
-        * <RatingCard />
-        */}
-      <RatingCardSass />
+      <Route path="/">
+        <RatingCard />
+      </Route>
+      <Route path="/scss">
+        <RatingCardSass />
+      </Route>
     </StyledContainer>
   )
 }
