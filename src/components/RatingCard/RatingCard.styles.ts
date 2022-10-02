@@ -18,8 +18,37 @@ export const StyledCard = styled('section', {
     color: '$light_grey',
   },
 
+  button: {
+    cursor: 'pointer',
+    width: '100%',
+    padding: '1.5rem',
+    fontWeight: 600,
+    fontSize: '1.5rem',
+    textTransform: 'uppercase',
+    letterSpacing: '0.15rem',
+    border: 0,
+    borderRadius: 999,
+    color: '$white',
+    backgroundColor: '$orange',
+    trns: 'background-color',
+
+    '&:hover': {
+      color: '$orange',
+      backgroundColor: '$white',
+    }
+  },
+
   '@xs': {
     width: '100%',
+  },
+
+ variants: {
+    result: {
+      true: {
+        width: 'unset',
+        maxWidth: '40rem',
+      }
+    }
   }
 })
 
@@ -74,23 +103,19 @@ export const StyledRatingScreen = styled('form', {
       gap: '1rem 2.5rem',
     },
   },
+})
 
-  button: {
-    cursor: 'pointer',
-    padding: '1.5rem',
-    fontWeight: 600,
-    fontSize: '1.5rem',
-    textTransform: 'uppercase',
-    letterSpacing: '0.15rem',
-    border: 0,
+export const StyledResultScreen = styled('div', {
+  display: 'grid',
+  justifyItems: 'center',
+  gap: '3rem',
+  py: '1.8rem',
+  textAlign: 'center',
+
+  '.result-banner': {
+    padding: '1rem 1.5rem',
     borderRadius: 999,
-    color: '$white',
-    backgroundColor: '$orange',
-    trns: 'background-color',
-
-    '&:hover': {
-      color: '$orange',
-      backgroundColor: '$white',
-    }
-  }
+    color: '$orange',
+    backgroundColor: '$blue',
+  },
 })

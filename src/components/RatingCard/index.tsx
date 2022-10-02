@@ -1,10 +1,29 @@
+import {ChangeEvent, useState} from 'react'
+
 import {ReactComponent as Star} from '~/assets/icon-star.svg'
+import {ReactComponent as Transaction} from '~/assets/illustration-thank-you.svg'
 
-import {StyledCard, StyledRatingScreen} from './RatingCard.styles'
+import {StyledCard, StyledRatingScreen, StyledResultScreen} from './RatingCard.styles'
 
-function RatingScreen() {
+interface RatingScreenProps {
+  setRating: (v?: number) => void
+}
+interface ResultScreenProps extends RatingScreenProps {
+  rating: number
+}
+
+function RatingScreen({setRating}: RatingScreenProps) {
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const form = new FormData(e.currentTarget)
+    const rating = form.get('rating')
+
+    rating && setRating(+rating)
+  }
+
   return (
-    <StyledRatingScreen>
+     <StyledRatingScreen onSubmit={handleSubmit}>
       <span className="icon"><Star /></span>
       <section>
         <h1>How did we do?</h1>
@@ -28,10 +47,30 @@ function RatingScreen() {
   )
 }
 
-export function RatingCard() {
+function ResultScreen({rating, setRating}: ResultScreenProps) {
   return (
-    <StyledCard>
-      <RatingScreen />
+    <StyledResultScreen >
+      <Transaction />
+      <span className="result-banner">You have selected {rating} out of 5</span>
+      <section>
+        <h1>Thank you!</h1>
+        <p>We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
+      </section>
+      <button onClick={() => setRating(undefined)}>Edit</button>
+    </StyledResultScreen>
+  )
+}
+
+export function RatingCard() {
+  const [rating, setRating] = useState<number | undefined>()
+
+  return (
+    <StyledCard result={!!rating}>
+      {
+        !rating
+          ? <RatingScreen setRating={setRating} />
+          : <ResultScreen rating={rating} setRating={setRating} />
+      }
     </StyledCard>
   )
 }
