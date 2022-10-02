@@ -1,9 +1,13 @@
 import {Route} from 'wouter'
+import {enableLegendStateReact} from '@legendapp/state/react'
 
 import {styled} from './utils/stitches'
 
 import {RatingCard} from './components/RatingCard'
 import {RatingCardSass} from './components/RatingCardSass'
+import {RatingCardLegendState} from './components/RatingCardLegendState'
+
+enableLegendStateReact()
 
 const StyledContainer = styled('div', {
   display: 'flex',
@@ -23,6 +27,9 @@ function App() {
       </Route>
       <Route path="/scss">
         <RatingCardSass />
+      </Route>
+      <Route path="/legend">
+        <RatingCardLegendState />
       </Route>
     </StyledContainer>
   )
