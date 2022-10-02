@@ -1,16 +1,21 @@
 import {styled} from './utils/stitches'
 
-const Container = styled('div', {
+import {RatingCard} from './components/RatingCard'
+
+const StyledContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   height: '100vh', 
+  padding: '2rem',
   color: '$white',
-  backgroundColor: '$very_dark_blue',
-  backgroundImage: 'linear-gradient(to bottom right, $dark_blue, $very_dark_blue)'
+  backgroundColor: '$darkest_blue',
 })
 
 function App() {
   return (
-    <Container className="App">
-    </Container>
+    <StyledContainer className="App">
+    </StyledContainer>
   )
 }
 
