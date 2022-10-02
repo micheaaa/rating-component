@@ -15,6 +15,7 @@ const StyledContainer = styled('div', {
 function App() {
   return (
     <StyledContainer className="App">
+      <RatingCard />
     </StyledContainer>
   )
 }
