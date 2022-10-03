@@ -1,25 +1,31 @@
-import {ChangeEvent, useState} from 'react'
+import {ChangeEvent, Dispatch, SetStateAction, useState} from 'react'
 
 import {ReactComponent as Star} from '~/assets/icon-star.svg'
 import {ReactComponent as Transaction} from '~/assets/illustration-thank-you.svg'
 
 import {StyledCard, StyledRatingScreen, StyledResultScreen} from './RatingCard.styles'
 
-interface RatingScreenProps {
-  setRating: (v?: number) => void
-}
-interface ResultScreenProps extends RatingScreenProps {
-  rating: number
+interface Rating {
+  prev?: number;
+  val?: number;
 }
 
-function RatingScreen({setRating}: RatingScreenProps) {
+interface RatingScreenProps {
+  previousRating?: number;
+  setRating: Dispatch<SetStateAction<Rating>>;
+}
+interface ResultScreenProps extends RatingScreenProps {
+  rating: number;
+}
+
+function RatingScreen({previousRating, setRating}: RatingScreenProps) {
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const form = new FormData(e.currentTarget)
     const rating = form.get('rating')
 
-    rating && setRating(+rating)
+    rating && setRating(({val}) => ({prev: val, val: +rating}))
   }
 
   return (
@@ -37,7 +43,7 @@ function RatingScreen({setRating}: RatingScreenProps) {
               id={`rated-${i}`}
               name="rating"
               value={i + 1}
-              defaultChecked={i === 4} />
+              defaultChecked={i + 1 === previousRating} />
             <label htmlFor={`rated-${i}`}>{i + 1}</label>
           </span>
         )}
@@ -56,20 +62,22 @@ function ResultScreen({rating, setRating}: ResultScreenProps) {
         <h1>Thank you!</h1>
         <p>We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
       </section>
-      <button onClick={() => setRating(undefined)}>Edit</button>
+      <button onClick={() => setRating({prev: rating, val: undefined})}>
+        Edit
+      </button>
     </StyledResultScreen>
   )
 }
 
 export function RatingCard() {
-  const [rating, setRating] = useState<number | undefined>()
+  const [rating, setRating] = useState<Rating>({})
 
   return (
-    <StyledCard result={!!rating}>
+    <StyledCard result={!!rating.val}>
       {
-        !rating
-          ? <RatingScreen setRating={setRating} />
-          : <ResultScreen rating={rating} setRating={setRating} />
+        !rating.val
+          ? <RatingScreen previousRating={rating.prev} setRating={setRating} />
+          : <ResultScreen rating={rating.val} setRating={setRating} />
       }
     </StyledCard>
   )
