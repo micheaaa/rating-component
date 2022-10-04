@@ -62,7 +62,7 @@ function ResultScreen({rating, setRating}: ResultScreenProps) {
         <h1>Thank you!</h1>
         <p>We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
       </section>
-      <button onClick={() => setRating({prev: rating, val: undefined})}>
+      <button onClick={() => setRating({prev: rating})}>
         Edit
       </button>
     </StyledResultScreen>
@@ -70,7 +70,7 @@ function ResultScreen({rating, setRating}: ResultScreenProps) {
 }
 
 export function RatingCard() {
-  const [rating, setRating] = useState<Rating>({})
+  const [rating, setRating] = useState<Rating>({prev: 5})
 
   return (
     <StyledCard result={!!rating.val}>
