@@ -1,4 +1,4 @@
-import {Route} from 'wouter'
+import {Route, Router} from 'wouter'
 import {enableLegendStateReact} from '@legendapp/state/react'
 
 import {styled} from './utils/stitches'
@@ -22,15 +22,17 @@ const StyledContainer = styled('div', {
 function App() {
   return (
     <StyledContainer className="App">
-      <Route path="/">
-        <RatingCard />
-      </Route>
-      <Route path="/scss">
-        <RatingCardSass />
-      </Route>
-      <Route path="/legend">
-        <RatingCardLegendState />
-      </Route>
+      <Router base="/rating-component">
+        <Route path="/">
+          <RatingCard />
+        </Route>
+        <Route path="/scss">
+          <RatingCardSass />
+        </Route>
+        <Route path="/legend">
+          <RatingCardLegendState />
+        </Route>
+      </Router>
     </StyledContainer>
   )
 }
